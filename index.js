@@ -89,7 +89,21 @@ class Player {
          console.log("Invalid opponent.");
        }
    }
-}
+
+   heal(){
+    if (Player.health >= 85){ 
+        Player.health = 100
+        console.log(`${this.name} can't heal past 100 my friend`);
+      } else if (Player.health <= 84) {
+        Player.health += 15
+        console.log( `${this.name} heals for 15`);
+      } else {
+        console.log("invalid");
+      }
+    }
+
+    
+  }
     
 
 
