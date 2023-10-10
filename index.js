@@ -18,23 +18,36 @@
 // wireframe below
 //  https://imgur.com/dwwkBVU
 
-document.addEventListener("DOMContentLoaded", function () {
-  class Player {
+// class Person {
+
+//     constructor() {
+//         this.legs = 2;
+//         this.arms = 2;
+//         this.eyes = "brown";
+//         this.hair = "grey";
+//     }
+    
+//     greet(otherPerson) {
+//         console.log("Hello " + otherPerson + "!")
+//     }
+
+//     walk() {
+//         console.log("I hate when my segway is in the shop")
+//     }
+// }
+
+document.addEventListener("DOMContentLoaded", function(){
+
+class Player {
+
     constructor(name) {
-      this.name = name;
-      this.health = 100; // initial health
-      this.isMyTurn = false;
+        this.name = name;
+        this.health = 100; // initialb health
+         this.isTurn = false; // flag to track if it's the player's turn
+    
     }
 
-    setTurn(isMyTurn) {
-      this.isMyTurn = isMyTurn;
-      if (isMyTurn) {
-        console.log(`${this.name}'s turn.`);
-      }
-    }
-
-    takeTurn(opponent) {
-      if (this.isMyTurn) {
+    punch(opponent) {
         // Check if opponent is a valid Player object
         if (opponent instanceof Player) {
           // Generate a random number between 0 and 1
@@ -42,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (Math.random() < successProbability) {
             // Punch succeeds, reduce opponent's health by 5
             opponent.health -= 5;
-
+  
             // Check if opponent's health has dropped below 0
             if (opponent.health <= 0) {
               console.log(`${opponent.name} has been defeated.`);
@@ -57,46 +70,93 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
           console.log("Invalid opponent.");
         }
-
-        // End the turn after taking an action
-        this.setTurn(false);
-      } else {
-        console.log("It's not your turn, wait for your opponent.");
       }
-    }
 
-    heal() {
-      if (this.health >= 85) {
-        this.health = 100;
+      kick(opponent) {
+        if (opponent instanceof Player) {
+            const successProbability = 0.5; 
+         if (Math.random() < successProbability) {
+           opponent.health -= 10;
+           if (opponent.health <= 0) {
+             console.log(`${opponent.name} has been defeated.`);
+           } else {
+             console.log(
+               `${this.name} kicks ${opponent.name}. ${opponent.name}'s health: ${opponent.health}`
+             );
+           }
+         } else {
+           console.log(`${this.name}'s kick missed.`);
+         }
+       } else {
+         console.log("Invalid opponent.");
+       }
+   }
+
+   heal(){
+    if (Player.health >= 85){ 
+        Player.health = 100
         console.log(`${this.name} can't heal past 100 my friend`);
-      } else if (this.health <= 84) {
-        this.health += 15;
-        console.log(`${this.name} heals for 15. ${this.name}'s health: ${this.health}`);
+      } else if (Player.health <= 84) {
+        Player.health += 15
+        console.log( `${this.name} heals for 15`);
       } else {
-        console.log("Invalid.");
+        console.log("invalid");
       }
     }
+    
+    takeTurn(opponents, action) {
+      if (this.health > 0) {
+          this.isTurn = true;
+
+          console.log(`${this.name}'s turn:`);
+
+          if (action === "punch") {
+              const opponent = opponents[Math.floor(Math.random() * opponents.length)];
+              this.punch(opponent);
+          } else if (action === "kick") {
+              const opponent = opponents[Math.floor(Math.random() * opponents.length)];
+              this.kick(opponent);
+          } else if (action === "heal") {
+              this.heal();
+          } else {
+              console.log("Invalid action. Valid actions are 'punch', 'kick', or 'heal'.");
+          }
+
+          this.isTurn = false;
+      } else {
+          console.log(`${this.name} can't take a turn because they have been defeated.`);
   }
+}
+}
 
-  const player1 = new Player("player1");
-  const player2 = new Player("player2");
 
-  // Initialize the game with player 1's turn
-  player1.setTurn(true);
 
-  // Function to switch turns between players
-  function switchTurns() {
-    player1.setTurn(!player1.isMyTurn);
-    player2.setTurn(!player2.isMyTurn);
-  }
+const player1 = new Player('player1')
 
-  // Test the game
-  player1.takeTurn(player2); // player1 punches player2 (70% chance)
-  console.log(player2.health);
-  switchTurns();
-  player2.takeTurn(player1); // player2 punches player1 (70% chance)
-  console.log(player1.health);
-  switchTurns();
-  player1.heal(); // player1 heals (if health is below 85)
-  console.log(player1.health);
-});
+const player2 = new Player ('player2')
+
+
+
+//  test
+player1.punch(player2); // player1 punches player2 (70% chance)
+console.log(player2.health)
+player2.punch(player1); // player2 punches player1 (70% chance)
+console.log(player1.health)
+
+
+
+
+
+
+
+
+
+
+
+
+})
+
+
+
+
+
