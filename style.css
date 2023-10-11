@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch&family=Lexend&family=Pixelify+Sans&family=Shadows+Into+Light&display=swap');
+
+body{
+    background-color: aqua;
+}
+
+#audioButton{
+    position: fixed;
+    top: 10px;
+}
+
+#stopAudioButton {
+    position: absolute;
+    top: 35px;
+    left: 10px;
+}
+
+h1{
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 70px;
+}
+
+h2{
+    display: inline;
+    padding: 50px;
+}
+ul{
+    list-style: none;
+    text-align: center;
+    word-spacing: 30%;
+    font-size: 20px;
+}
+
+li{
+    display: inline;
+    padding: 20px;
+    text-align: center;
+    justify-self: center;
+}
