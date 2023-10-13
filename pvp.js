@@ -3,37 +3,17 @@ document.addEventListener("DOMContentLoaded", function(){
     class Player {
     
         constructor(name, opponents) {
-            this.name = name;
+            // this.player1 = player1;
+            // this.player2 = player2;
             this.health = 100; // initialb health
             this.isTurn = false; // flag to track if it's the player's turn
+            this.name = name;
             this.opponents = opponents;
-
-            // const characterName = prompt(`What would you like to name your character?`).toUpperCase()
-            // const newNames = new Player (characterName); // instantiates a new tamagotchi with users pet name
-            // const nameId = document.getElementById("name") // search html for element with this id
-            // nameId.innerHTML = `${characterName}` // inserts the user input into html
-
-            const audio = document.getElementById("audio");
-            const playAudioButton = document.getElementById("playAudio");
-            
-   playAudioButton.addEventListener("click", function() {
-       // if (audio.paused) {
-       //     audio.play()
-       // }
-       audio.play()
-   });
-   const stopAudioButton = document.getElementById("stopAudio");
-   
-   stopAudioButton.addEventListener("click", function() {
-       // if (audio.play) {
-       //     audio.pause()
-       // }
-       audio.pause()
-   });
         }
     
         punch(opponent) {
             // Check if opponent is a valid Player object
+            console.log("punchfunction")
             if (opponent instanceof Player) {
               // Generate a random number between 0 and 1
               const successProbability = 0.7; // 70% success rate
@@ -132,11 +112,32 @@ document.addEventListener("DOMContentLoaded", function(){
     // Add player1 to player2's opponents array
     player2.opponents.push(player1);
     
+    document.getElementById("punching1").addEventListener("click", function(){player1.takeTurn(player2, "punch")})
+
     //  test
     player1.takeTurn(player2, 'punch'); // player1 punches player2
     player2.takeTurn(player1, 'kick'); // player2 kicks player1
     
 
+
+
+    const audio = document.getElementById("audio");
+    const playAudioButton = document.getElementById("playAudio");
+    
+playAudioButton.addEventListener("click", function() {
+// if (audio.paused) {
+//     audio.play()
+// }
+audio.play()
+});
+const stopAudioButton = document.getElementById("stopAudio");
+
+stopAudioButton.addEventListener("click", function() {
+// if (audio.play) {
+//     audio.pause()
+// }
+audio.pause()
+});
     
     
     
