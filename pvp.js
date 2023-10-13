@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", function(){
             this.isTurn = false; // flag to track if it's the player's turn
             this.opponents = opponents;
 
-            const characterName = prompt(`What would you like to name your character?`).toUpperCase()
-            const newNames = new Player (characterName); // instantiates a new tamagotchi with users pet name
-            const nameId = document.getElementById("name") // search html for element with this id
-            nameId.innerHTML = `${characterName}` // inserts the user input into html
+            // const characterName = prompt(`What would you like to name your character?`).toUpperCase()
+            // const newNames = new Player (characterName); // instantiates a new tamagotchi with users pet name
+            // const nameId = document.getElementById("name") // search html for element with this id
+            // nameId.innerHTML = `${characterName}` // inserts the user input into html
 
             const audio = document.getElementById("audio");
             const playAudioButton = document.getElementById("playAudio");

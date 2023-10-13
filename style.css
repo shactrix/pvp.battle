@@ -2,11 +2,13 @@
 
 body{
     background-color: aqua;
+   
 }
 
-#audioButton{
-    position: fixed;
-    top: 10px;
+#playAudio{
+    position: absolute;
+    top: 5px;
+    left: 10px;
 }
 
 #stopAudioButton {
@@ -16,24 +18,61 @@ body{
 }
 
 h1{
-    font-family: 'Pixelify Sans', cursive;
-    font-size: 70px;
+    /* font-family: 'Pixelify Sans', cursive;
+    font-size: 70px; */
 }
 
 h2{
-    display: inline;
-    padding: 50px;
+    /* display: inline;
+    padding: 50px; */
 }
 ul{
-    list-style: none;
+    /* list-style: none;
     text-align: center;
     word-spacing: 30%;
-    font-size: 20px;
+    font-size: 20px; */
+}
+header{
+    text-align: center;
 }
 
 li{
-    display: inline;
+    /* display: inline;
     padding: 20px;
     text-align: center;
-    justify-self: center;
+    justify-self: center; */
 }
+#buttons{
+    position: absolute;
+    bottom: 10px;
+    text-align: left;
+    width: 100%;
+    margin: 20px;
+    padding: 30px; 
+    word-spacing: 30px;
+}
+#buttons2{
+    position: absolute;
+    bottom: 10px;
+    text-align: right;
+    width: 100%;
+    margin: 20px;
+    padding: 30px; 
+    word-spacing: 30px;
+
+}
+/* @keyframes img{
+    0% {
+        transform: translateX(100px) rotateY(0deg); 
+    } /* moves element across the X axis */ /* rotates element around Y axis */
+    /* 49% {
+        transform: translateX(500px);
+    }
+    50% {
+        transform: translateX(500px) rotateY(360deg);
+    }
+    100% {
+        transform: translateX(100px);
+    }  */
+    /* animates images */
+/* } */ 
