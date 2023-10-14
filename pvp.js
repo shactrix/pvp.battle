@@ -113,6 +113,11 @@ document.addEventListener("DOMContentLoaded", function(){
     player2.opponents.push(player1);
     
     document.getElementById("punching1").addEventListener("click", function(){player1.takeTurn(player2, "punch")})
+    document.getElementById("kicking1").addEventListener("click", function(){player1.takeTurn(player2, "kick")})
+    document.getElementById("healing1").addEventListener("click", function(){player1.takeTurn(player2, "heal")})
+    document.getElementById("punching2").addEventListener("click", function(){player2.takeTurn(player1, "punch")})
+    document.getElementById("kicking2").addEventListener("click", function(){player2.takeTurn(player1, "kick")})
+    document.getElementById("healing2").addEventListener("click", function(){player2.takeTurn(player1, "heal")})
 
     //  test
     player1.takeTurn(player2, 'punch'); // player1 punches player2
