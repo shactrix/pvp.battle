@@ -90,29 +90,25 @@ document.addEventListener("DOMContentLoaded", function(){
       takeTurn(opponent, action, playerID) {
         if (this.health > 0) {
           this.isTurn = true;
-  
+      
           console.log(`${this.name}'s turn:`);
-  
+      
           if (action === "punch") {
-              this.punch(opponent, playerID);
+            this.punch(opponent, playerID);
           } else if (action === "kick") {
-              this.kick(opponent, playerID);
+            this.kick(opponent, playerID);
           } else if (action === "heal") {
-              this.heal();
-          // } else {
-          //     console.log("Invalid action. Valid actions are 'punch', 'kick', or 'heal'.");
-          // }
+            this.heal();
           } else {
-            throw new Error("Invalid action. Valid actions are 'punch', 'kick', or 'heal'.");
+            console.log("Invalid action. Valid actions are 'punch', 'kick', or 'heal'.");
           }
-  
-          this.isTurn = false;
+      
+          this.isTurn = false; // End the turn after the action is performed
         } else {
           console.log(`${this.name} can't take a turn because they have been defeated.`);
         }
       }
-  }
-  
+    }      
   
   
   // const player1 = new Player('player1', [player2]);
@@ -120,22 +116,71 @@ document.addEventListener("DOMContentLoaded", function(){
   
   const player1 = new Player('player1', []); // instantiate player1 and player2 first and then pass them to each other
   const player2 = new Player('player2', [player1]);
-  
+  player1.isTurn = true
+  player2.isTurn = false
   // Add player2 to player1's opponents array
   player1.opponents.push(player2);
   
   // Add player1 to player2's opponents array
   player2.opponents.push(player1);
   
-  document.getElementById("punching1").addEventListener("click", function(){player1.takeTurn(player2, "punch", "player2")})
-  document.getElementById("kicking1").addEventListener("click", function(){player1.takeTurn(player2, "kick", "player2")})
-  // document.getElementById("healing1").addEventListener("click", function(){player1.takeTurn(player1, "heal", "player1")})
-  document.getElementById("healing1").addEventListener("click", function(){player1.heal()})
+ // Add event listeners for player1's buttons
+document.getElementById("punching1").addEventListener("click", function(){
+  if (player1.isTurn) {
+    player1.takeTurn(player2, "punch", "player2");
+    player1.isTurn = false; // End player1's turn
+    player2.isTurn = true;  // Start player2's turn
+  }
+});
 
-  document.getElementById("punching2").addEventListener("click", function(){player2.takeTurn(player1, "punch", "player1")})
-  document.getElementById("kicking2").addEventListener("click", function(){player2.takeTurn(player1, "kick", "player1")})
-  // document.getElementById("healing2").addEventListener("click", function(){player2.takeTurn(player2, "heal", "player2")})
-  document.getElementById("healing2").addEventListener("click", function(){player2.heal()})
+document.getElementById("kicking1").addEventListener("click", function(){
+  if (player1.isTurn) {
+    player1.takeTurn(player2, "kick", "player2");
+    player1.isTurn = false; // End player1's turn
+    player2.isTurn = true;  // Start player2's turn
+  };
+})
+document.getElementById("healing1").addEventListener("click", function(){
+  if (player1.isTurn) {
+    player1.heal();
+    player1.isTurn = false; // End player1's turn
+    player2.isTurn = true;  // Start player2's turn
+  };
+});
+
+// Add event listeners for player2's buttons
+document.getElementById("punching2").addEventListener("click", function(){
+  if (player2.isTurn) {
+    player2.takeTurn(player1, "punch", "player1");
+    player2.isTurn = false; // End player2's turn
+    player1.isTurn = true;  // Start player1's turn
+  }
+});
+
+document.getElementById("kicking2").addEventListener("click", function(){
+  if (player2.isTurn) {
+    player2.takeTurn(player1, "kick", "player1");
+    player2.isTurn = false; // End player2's turn
+    player1.isTurn = true;  // Start player1's turn
+  };
+})
+document.getElementById("healing2").addEventListener("click", function(){
+  if (player2.isTurn) {
+    player2.heal();
+    player2.isTurn = false; // End player2's turn
+    player1.isTurn = true;  // Start player1's turn
+  };
+});
+  
+  // document.getElementById("punching1").addEventListener("click", function(){player1.takeTurn(player2, "punch", "player2")})
+  // document.getElementById("kicking1").addEventListener("click", function(){player1.takeTurn(player2, "kick", "player2")})
+  // //  document.getElementById("healing1").addEventListener("click", function(){player1.takeTurn(player1, "heal", "player1")})
+  // document.getElementById("healing1").addEventListener("click", function(){player1.heal()})
+
+  // document.getElementById("punching2").addEventListener("click", function(){player2.takeTurn(player1, "punch", "player1")})
+  // document.getElementById("kicking2").addEventListener("click", function(){player2.takeTurn(player1, "kick", "player1")})
+  // //  document.getElementById("healing2").addEventListener("click", function(){player2.takeTurn(player2, "heal", "player2")})
+  // document.getElementById("healing2").addEventListener("click", function(){player2.heal()})
 
   //  test
   // player1.takeTurn(player2, 'punch'); // player1 punches player2
@@ -160,8 +205,5 @@ stopAudioButton.addEventListener("click", function() {
 //     audio.pause()
 // }
 audio.pause()
+})
 });
-  
-  
-  
-  })
