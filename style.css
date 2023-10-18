@@ -26,7 +26,36 @@ h1{
 }
 
 h2{
-  
+#image{
+    margin: auto;
+    justify-content: center;
+    display: flex;
+    padding: 10px;
+    margin: 10px;
+
+  }
+image.fighter1{
+    margin-left: -20%;
+    margin-top: 390px;
+    max-width: 200px;
+    visibility: visible;
+    z-index: 0;
+    position: fixed;
+    left:480px;
+    top:-20px;
+    animation:img 5s infinite;
+}
+image.fighter2{
+    margin-left: -20%;
+    margin-top: 390px;
+    max-width: 200px;
+    visibility: visible;
+    z-index: 0;
+    position: fixed;
+    left:480px;
+    top:-20px;
+    animation:img 5s infinite; /* animation is 5s long and repats infinitely */
+}
 }
 ul {
     text-align: center;
@@ -119,5 +148,5 @@ header{
     }
     100% {
         transform: translateX(100px);
-    }  */
+    }  
     /* animates images */
