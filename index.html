@@ -6,41 +6,54 @@
     <title>SHOWDOWN</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <h1> SHOWDOWN </h1>
-        <h2 id="name"></h2>
-        <h2 id="health"></h2>
-    </header>
-    <script type="text/javascript" src="pvp.js"></script>
-    <div id="audiobutton">
-        <audio id="audio" src="assets/tabitha.mp3"></audio>
-        <button id="playAudio">Play Audio</button>
-    </div>
-    <div id="stopAudioButton">
-        <button id="stopAudio">Stop Audio</button>
-    </div>
-    <div id="statsText">
-        <ul>
-            <li id="player1health">100</li>
-            <li id="player2health">100</li>
-        </ul>
-    </div>
-    <div class="container" >
-    <div id="buttons1">
-        <button id="punching1">Punch!</button>
-        <button id="kicking1">Kick!</button>
-        <button id="healing1">Heal!</button>
-    </div>
-    <div id="image">
-        <img src="" class = "">
-        <img src="" class = "">
-    </div>
-    <div id="buttons2">
-        <button id="punching2">Punch!</button>
-        <button id="kicking2">Kick!</button>
-        <button id="healing2">Heal!</button>
-    </div>
-       </div> 
-</body>
+    <body>
+        <div id="gamePlay">
+            <script type="text/javascript" src="pvp.js"></script>
+            <header>
+                <h1> SHOWDOWN </h1>
+                <h2 id="name"></h2>
+                <h2 id="health"></h2>
+            </header>
+            <div id="audiobutton">
+                <audio id="audio" src="assets/tabitha.mp3"></audio>
+                <button id="playAudio">Play Audio</button>
+            </div>
+            <div id="stopAudioButton">
+                <button id="stopAudio">Stop Audio</button>
+            </div>
+            <div id="statsText">
+                <ul>
+                    <li id="player1health">100</li>
+                    <li id="player2health">100</li>
+                </ul>
+            </div>
+            <div class="container" >
+                <div id="buttons1">
+                    <button id="punching1">Punch!</button>
+                    <button id="kicking1">Kick!</button>
+                    <button id="healing1">Heal!</button>
+                </div>
+                <div id="image">
+                    <img src="" class = "">
+                    <img src="" class = "">
+                </div>
+                <div id="buttons2">
+                    <button id="punching2">Punch!</button>
+                    <button id="kicking2">Kick!</button>
+                    <button id="healing2">Heal!</button>
+                </div>
+            </div> 
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <p id="modal-message"></p>
+                </div>
+            </div>
+        </div>
+       
+        <h1 id="gameOver">
+            Game Over
+            <h3 id="playerWin"></h3>
+        </h1>
+    </body>
 </html>
