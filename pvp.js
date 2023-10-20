@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
           const successProbability = 0.7; // 70% success rate
           if (Math.random() < successProbability) {
             // Punch succeeds, reduce opponent's health by 5
-            opponent.health -= 25;
+            opponent.health -= 10;
             document.getElementById(playerID + "health").innerHTML = opponent.health;
   
             // Check if opponent's health has dropped below 0
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function(){
         if (opponent instanceof Player) {
             const successProbability = 0.5; 
           if (Math.random() < successProbability) {
-            opponent.health -= 10;
+            opponent.health -= 20;
             document.getElementById(playerID + "health").innerHTML = opponent.health;
   
             if (opponent.health <= 0) {
@@ -81,15 +81,15 @@ document.addEventListener("DOMContentLoaded", function(){
     }
   
     heal(){
-    if (this.health >= 85) {
-      this.health = 100;
-      document.getElementById(this.name + "health").innerHTML = this.health;
-      console.log(`${this.name} can't heal past 100 my friend`);
-    } else {
-        this.health += 15;
+      if (this.health >= 80) {
+        this.health = 100;
         document.getElementById(this.name + "health").innerHTML = this.health;
-        console.log(`${this.name} heals for 15`);
-    }
+        alert(`${this.name} can't heal past 100 my friend`);
+      } else {
+          this.health += 20;
+          document.getElementById(this.name + "health").innerHTML = this.health;
+          console.log(`${this.name} heals for 20`);
+      }
     }
     
     takeTurn(opponent, action, playerID) {
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function(){
         gameOver(playerID)
         // console.log(`${this.name} can't take a turn because they have been defeated.`);
       } else if (this.isTurn) {
-          console.log(`${this.name}'s turn:`);
+          // console.log(`${this.name}'s turn:`);
   
           if (action === "punch") {
               this.punch(opponent, playerID);
