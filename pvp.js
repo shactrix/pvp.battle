@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function(){
-
+const instructions = `Instructions: Player 1 starts by choosing an action: punch or kick. Then Player 2 will choose an action. Once your health is 80 or less, you can choose to heal for 20 health points. Healing counts as a turn. The first player to reach 0 health loses.`
+showModal(instructions)
   // Function to display modal with message (instead of default alert box)
   function showModal(message) {
     const modal = document.getElementById("myModal");
@@ -200,17 +201,11 @@ document.addEventListener("DOMContentLoaded", function(){
   const playAudioButton = document.getElementById("playAudio");
   
   playAudioButton.addEventListener("click", function() {
-  // if (audio.paused) {
-  //     audio.play()
-  // }
     audio.play()
   });
   const stopAudioButton = document.getElementById("stopAudio");
   
   stopAudioButton.addEventListener("click", function() {
-  // if (audio.play) {
-  //     audio.pause()
-  // }
     audio.pause()
   })
   
@@ -228,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function(){
   }
   
   function gameOver(playerID) {
-    // showModal(`${playerID} Wins`)
     document.getElementById('gamePlay').style.visibility = 'hidden'
     document.getElementById('gameOver').style.visibility = 'visible'
     const winner = document.getElementById('playerWin')
